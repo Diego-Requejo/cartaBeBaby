@@ -1,344 +1,484 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Candidatura a Baby - BEST Football Edition</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitud de Ascenso BEST - Formación 4-3-3</title>
+  <meta name="description" content="">
 
-    <meta name="description" content="">
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:alt" content="">
 
-    <meta property="og:title" content="">
-    <meta property="og:type" content="">
-    <meta property="og:url" content="">
-    <meta property="og:image" content="">
-    <meta property="og:image:alt" content="">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="img/icon.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="icon.png">
-    <style>
-        body {
-            background-color: #1a1a1a;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: white;
-            overflow-x: hidden;
-        }
+    body {
+      font-family: 'Arial', sans-serif;
+      min-height: 100vh;
+      padding: 20px;
+      overflow-x: hidden;
+      background-image:url("img/fondo.jpg");/*para poner el fondo de la web*/
+      background-repeat:no-repeat;
+      background-position:center;
+      background-size:cover;
+    }
 
-        .pitch {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            aspect-ratio: 2/3;
-            background: linear-gradient(180deg, #2d5a27 0%, #3e8e34 100%);
-            margin: 20px auto;
-            border: 5px solid white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      color: white;
+    }
 
-        /* Líneas del campo */
-        .pitch::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: rgba(255,255,255,0.5);
-        }
+    .header h1 {
+      font-size: 2.5em;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+      margin-bottom: 10px;
+    }
 
-        .center-circle {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 120px;
-            height: 120px;
-            border: 2px solid rgba(255,255,255,0.5);
-            border-radius: 50%;
-        }
+    .header h2 {
+      font-size: 1.5em;
+      color: #ffd700;
+      font-weight: bold;
+    }
 
-        .penalty-area-top {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 15%;
-            border: 2px solid rgba(255,255,255,0.5);
-            border-top: none;
-        }
+    .header p {
+      margin-top: 10px;
+      font-size: 1.1em;
+    }
 
-        .penalty-area-bottom {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 15%;
-            border: 2px solid rgba(255,255,255,0.5);
-            border-bottom: none;
-        }
+    .field-container {
+      max-width: 900px;
+      aspect-ratio: 3/2;
+      margin: 0 auto;
+      position: relative;
+      background: #2d8f42;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      border: 5px solid white;
+      padding: 10px 10px;
+      background-image: repeating-linear-gradient(
+              90deg,
+              transparent,
+              transparent 49.5%,
+              rgba(255,255,255,0.1) 49.5%,
+              rgba(255,255,255,0.1) 50.5%,
+              transparent 50.5%,
+              transparent 100%
+      );
+    }
 
-        /* Jugadores */
-        .player {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 10;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            border: 3px solid #facc15;
-        }
+    .center-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120px;
+      height: 120px;
+      border: 4px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+    }
 
-        .player:hover {
-            transform: scale(1.2);
-            box-shadow: 0 0 20px #facc15;
-        }
+    .center-dot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10px;
+      height: 10px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50%;
+    }
 
-        .player-label {
-            position: absolute;
-            bottom: -25px;
-            background: rgba(0,0,0,0.8);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 10px;
-            white-space: nowrap;
-            color: white;
-            font-weight: bold;
-        }
+    .player {
+      position: absolute;
+      transform: translate(-50%, 0%);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-        /* Modal */
-        #modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 100;
-            padding: 20px;
-            align-items: center;
-            justify-content: center;
-        }
+    .player:hover {
+      transform: translate(-50%, -10%) scale(1.15);
+    }
 
-        .modal-content {
-            background: #2d2d2d;
-            border-radius: 20px;
-            max-width: 500px;
-            width: 100%;
-            padding: 30px;
-            position: relative;
-            border: 2px solid #3e8e34;
-            animation: slideIn 0.3s ease-out;
-        }
+    .player-circle {
+      width: 80px;
+      height: 80px;
+      background: white;
+      border-radius: 30%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3em;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      border: 4px solid #007bff;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
 
-        @keyframes slideIn {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+    .player-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #888;
-        }
+    .player:hover .player-circle {
+      border-color: #ffd700;
+      box-shadow: 0 6px 20px rgba(255,215,0,0.5);
+    }
 
-        .meme-placeholder {
-            width: 100%;
-            height: 250px;
-            background: #444;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-style: italic;
-            text-align: center;
-            padding: 20px;
-            color: #aaa;
-            border: 2px dashed #666;
-        }
-    </style>
+    .player-label {
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1a3a52;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75em;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .player:hover .player-label {
+      opacity: 1;
+    }
+
+    /* Posiciones */
+    .gk { bottom: 5%; left: 50%; }
+    .df1 { bottom: 25%; left: 20%; }
+    .df2 { bottom: 25%; left: 40%; }
+    .df3 { bottom: 25%; left: 60%; }
+    .df4 { bottom: 25%; left: 80%; }
+    .mf1 { bottom: 50%; left: 30%; }
+    .mf2 { bottom: 50%; left: 50%; }
+    .mf3 { bottom: 50%; left: 70%; }
+    .fw1 { bottom: 75%; left: 25%; }
+    .fw2 { bottom: 75%; left: 50%; }
+    .fw3 { bottom: 75%; left: 75%; }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 15px;
+      max-width: 700px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      padding: 40px;
+      box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #dc3545;
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 1.5em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .close-btn:hover {
+      background: #c82333;
+    }
+
+    .modal-meme {
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, #4e9af1 0%, #007bff 100%);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5em;
+      margin: 0 auto 20px;
+      box-shadow: 0 5px 20px rgba(0,123,255,0.4);
+      border: 5px solid #ffd700;
+      overflow: hidden;
+    }
+
+    .modal-meme img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal h3 {
+      text-align: center;
+      font-size: 1.5em;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .modal h4 {
+      text-align: center;
+      font-size: 1.8em;
+      color: #007bff;
+      margin-bottom: 25px;
+      font-weight: bold;
+    }
+
+    .modal p {
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: #444;
+      text-align: justify;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      color: white;
+    }
+
+    .footer p {
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 { font-size: 1.8em; }
+      .header h2 { font-size: 1.2em; }
+      .player-circle { width: 60px; height: 60px; font-size: 2em; }
+      .modal-content { padding: 30px 20px; }
+      .modal h4 { font-size: 1.4em; }
+    }
+  </style>
 </head>
-<body class="p-4 md:p-8">
+<body>
+<div class="header">
+  <h1>🏆 SOLICITUD DE ASCENSO BEST 🏆</h1>
+  <h2>De Observer a Baby - Formación 4-3-3</h2>
+  <p>⚽ Haz clic en cada jugador para descubrir mi jugada maestra ⚽</p>
+</div>
 
-    <header class="text-center mb-10">
-        <h1 class="text-4xl md:text-6xl font-black text-yellow-400 mb-2 uppercase tracking-tighter">Fichajes BEST 2024</h1>
-        <p class="text-xl text-gray-300">Candidatura de Observer a <span class="text-white font-bold italic underline decoration-yellow-500">Baby</span></p>
-        <div class="mt-4 inline-block bg-yellow-500 text-black px-4 py-1 rounded-full font-bold text-sm">
-            ESTRATEGIA: 4 - 3 - 3
-        </div>
-    </header>
+<div class="field-container">
+  <div class="center-circle"></div>
+  <div class="center-dot"></div>
 
-    <div class="max-w-4xl mx-auto">
-        <div class="bg-blue-900/30 p-4 rounded-xl border border-blue-500/50 mb-6 text-center italic">
-            "Para ganar en BEST, hay que dejar de observar desde el banquillo y saltar al campo como Baby."
-        </div>
-
-        <!-- El Campo de Fútbol -->
-        <div class="pitch" id="pitch">
-            <div class="center-circle"></div>
-            <div class="penalty-area-top"></div>
-            <div class="penalty-area-bottom"></div>
-
-            <!-- PORTERO (Introducción) -->
-            <div class="player" style="bottom: 5%; left: 50%; transform: translateX(-50%);" onclick="openModal(0)">
-                <span class="text-2xl">🧤</span>
-                <span class="player-label text-yellow-400">INTRO</span>
-            </div>
-
-            <!-- DEFENSA (4 Motivos) -->
-            <div class="player" style="bottom: 25%; left: 15%;" onclick="openModal(1)">
-                <span class="text-2xl">🛡️</span>
-                <span class="player-label">MOTIVO 1</span>
-            </div>
-            <div class="player" style="bottom: 20%; left: 38%;" onclick="openModal(2)">
-                <span class="text-2xl">🛡️</span>
-                <span class="player-label">MOTIVO 2</span>
-            </div>
-            <div class="player" style="bottom: 20%; left: 62%;" onclick="openModal(3)">
-                <span class="text-2xl">🛡️</span>
-                <span class="player-label">MOTIVO 3</span>
-            </div>
-            <div class="player" style="bottom: 25%; left: 85%;" onclick="openModal(4)">
-                <span class="text-2xl">🛡️</span>
-                <span class="player-label">MOTIVO 4</span>
-            </div>
-
-            <!-- MEDIO (Aportaciones) -->
-            <div class="player" style="bottom: 50%; left: 25%; transform: translateY(50%);" onclick="openModal(5)">
-                <span class="text-2xl">⚙️</span>
-                <span class="player-label">APORTE A</span>
-            </div>
-            <div class="player" style="bottom: 45%; left: 50%; transform: translate(-50%, 50%);" onclick="openModal(6)">
-                <span class="text-2xl">⚙️</span>
-                <span class="player-label">APORTE B</span>
-            </div>
-            <div class="player" style="bottom: 50%; left: 75%; transform: translateY(50%);" onclick="openModal(7)">
-                <span class="text-2xl">⚙️</span>
-                <span class="player-label">APORTE C</span>
-            </div>
-
-            <!-- DELANTERA (Planes Futuros) -->
-            <div class="player" style="bottom: 80%; left: 20%;" onclick="openModal(8)">
-                <span class="text-2xl">🔥</span>
-                <span class="player-label text-red-400">PLAN 1</span>
-            </div>
-            <div class="player" style="bottom: 85%; left: 50%; transform: translateX(-50%);" onclick="openModal(9)">
-                <span class="text-2xl">🚀</span>
-                <span class="player-label text-red-400">VISION</span>
-            </div>
-            <div class="player" style="bottom: 80%; left: 80%;" onclick="openModal(10)">
-                <span class="text-2xl">🔥</span>
-                <span class="player-label text-red-400">PLAN 2</span>
-            </div>
-        </div>
+  <!-- Portero -->
+  <div class="player gk" onclick="openModal('gk')">
+    <div class="player-circle">
+      <img src="https://i.imgflip.com/2/1wz3as.jpg" alt="This is fine">
     </div>
+    <div class="player-label">Portero</div>
+  </div>
 
-    <!-- Modal para mostrar Info del Jugador -->
-    <div id="modal" onclick="closeModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-btn" onclick="document.getElementById('modal').style.display='none'">&times;</span>
-            <div id="modal-meme" class="meme-placeholder">
-                <!-- Imagen del meme -->
-            </div>
-            <h2 id="modal-title" class="text-2xl font-bold text-yellow-400 mb-4"></h2>
-            <p id="modal-text" class="text-gray-200 leading-relaxed"></p>
-        </div>
+  <!-- Defensa -->
+  <div class="player df1" onclick="openModal('df1')">
+    <div class="player-circle">
+      <img src="https://i.imgflip.com/7cp4yh.jpg" alt="Heart eyes">
     </div>
+    <div class="player-label">Defensa</div>
+  </div>
+  <div class="player df2" onclick="openModal('df2')">
+    <div class="player-circle">
+      <img src="https://i.imgflip.com/kf88q.jpg" alt="Success kid">
+    </div>
+    <div class="player-label">Defensa</div>
+  </div>
+  <div class="player df3" onclick="openModal('df3')">
+    <div class="player-circle">
+      <img src="https://i.imgflip.com/1bij.jpg" alt="Expanding brain">
+    </div>
+    <div class="player-label">Defensa</div>
+  </div>
+  <div class="player df4" onclick="openModal('df4')">
+    <div class="player-circle">
+      <img src="https://i.imgflip.com/261o3j.jpg" alt="Epic handshake">
+    </div>
+    <div class="player-label">Defensa</div>
+  </div>
 
-    <footer class="mt-12 text-center text-gray-500 text-sm">
-        Presiona sobre cada jugador para conocer los detalles de mi fichaje.
-    </footer>
+  <!-- Mediocentros -->
+  <div class="player mf1" onclick="openModal('mf1')">
+    <div class="player-circle">
+      <img src="https://i.imgflip.com/wje0h.jpg" alt="Success">
+    </div>
+    <div class="player-label">Medio</div>
+  </div>
+  <div class="player mf2" onclick="openModal('mf2')">
+    <div class="player-circle">
+      <img src="https://i.imgflip.com/30b1gx.jpg" alt="Is this a pigeon">
+    </div>
+    <div class="player-label">Medio</div>
+  </div>
+  <div class="player mf3" onclick="openModal('mf3')">
+    <div class="player-circle">
+      <img src="https://i.imgflip.com/265k.jpg" alt="Stonks">
+    </div>
+    <div class="player-label">Medio</div>
+  </div>
 
-    <script>
-        const playersData = [
-            {
-                title: "El Portero: ¡Se acabó observar!",
-                meme: "[MEME: Persona mirando a través de unos binoculares cansada]\n\n'Llevo tanto tiempo observando que ya sé hasta qué marca de café prefiere el Board. ¡Es hora de soltar los prismáticos y ponerme los guantes!'",
-                text: "Como Observer, he disfrutado viendo cómo funciona la maquinaria de BEST. He aprendido los acrónimos, he ido a las reuniones y he flipado con la energía. Pero ver el partido desde el banquillo ya no es suficiente. Quiero ser la primera línea de defensa de la asociación, estar ahí cuando se me necesite y pasar de ser un espectador a ser parte del equipo oficial."
-            },
-            {
-                title: "Defensa 1: He encontrado mi 'vibe'",
-                meme: "[MEME: Spiderman señalando a otro Spiderman]\n\n'Cuando entro en una sala de BEST y me doy cuenta de que todos están igual de locos que yo.'",
-                text: "El primer motivo es la conexión. He descubierto que BEST no es solo una asociación de estudiantes, es un ecosistema donde encajo perfectamente. Quiero crecer aquí porque me siento cómodo siendo yo mismo."
-            },
-            {
-                title: "Defensa 2: Responsabilidad a mi ritmo",
-                meme: "[MEME: Bebé tomando agua tranquilamente]\n\n'Yo decidiendo mis propias responsabilidades como Baby.'",
-                text: "Ser Baby me permite aportar mi granito de arena bajo mis propios términos. Quiero comprometerme de forma honesta: dar el 100% en las tareas que elija, asegurando calidad sin quemarme, como un buen defensa que sabe cuándo subir al ataque."
-            },
-            {
-                title: "Defensa 3: Sed de Aprendizaje",
-                meme: "[MEME: Stonks Guy]\n\n'Mi conocimiento sobre Soft Skills después de un mes en BEST.'",
-                text: "Quiero seguir creciendo para absorber todo el conocimiento que BEST ofrece. Desde logística hasta comunicación, cada evento es una oportunidad para subir de nivel mis habilidades personales y profesionales."
-            },
-            {
-                title: "Defensa 4: Pasión por el Proyecto",
-                meme: "[MEME: El tipo de 'Change my mind']\n\n'BEST es la mejor asociación para universitarios. Imposible cambiar mi opinión.'",
-                text: "Creo firmemente en lo que hacemos. Ayudar a que otros estudiantes tengan oportunidades internacionales es una misión que me motiva a pasar de ser un interesado externo a un miembro activo."
-            },
-            {
-                title: "Medio 1: Ayuda en Eventos Locales",
-                meme: "[MEME: I'm doing my part - Starship Troopers]\n\n'Yo después de mover dos sillas en el último evento.'",
-                text: "Hasta ahora, aunque era Observer, no me he quedado de brazos cruzados. He ayudado en la organización logística del último evento local, asegurándome de que todo estuviera en su sitio y apoyando al equipo en lo que hiciera falta."
-            },
-            {
-                title: "Medio 2: Brainstorming Creativo",
-                meme: "[MEME: Drake formato 'Si/No']\n\n'No: Quedarse callado en las reuniones.\nSí: Soltar ideas locas para el próximo Spirit.'",
-                text: "He participado activamente en las sesiones de ideas, aportando mi visión fresca y 'externa' para mejorar las dinámicas de grupo y proponer temas nuevos para futuros talleres."
-            },
-            {
-                title: "Medio 3: Difusión y Redes",
-                meme: "[MEME: El Joker bailando en las escaleras]\n\n'Yo después de que un amigo me pregunte qué es BEST por 40ª vez.'",
-                text: "He estado haciendo labor de 'evangelización', explicando a mis compañeros de clase qué es BEST y animándoles a que vengan a conocernos. He sido un embajador en la sombra."
-            },
-            {
-                title: "Delantero 1: El ataque del Marketing",
-                meme: "[MEME: Modern problems require modern solutions]\n\n'Usar memes de fútbol para que me acepten como Baby.'",
-                text: "Mi plan a medio plazo es revolucionar nuestro TikTok. Quiero crear una serie de vídeos cortos contando 'La vida del Baby' para atraer a más gente de forma divertida y cercana."
-            },
-            {
-                title: "Delantero 2: Mentoring de Observers",
-                meme: "[MEME: Yoda y Luke Skywalker]\n\n'Enseñando a los nuevos Observers dónde se guardan las galletas.'",
-                text: "Me gustaría ser el puente para los nuevos. Sé lo que se siente al estar perdido al principio, y quiero ayudar a que la integración de los próximos sea rápida y llena de risas."
-            },
-            {
-                title: "Delantero 3: Mi primer Workshop",
-                meme: "[MEME: Buzz Lightyear: Al infinito y más allá]\n\n'Mis ganas de organizar mi primer evento propio.'",
-                text: "A medio plazo, mi objetivo es liderar una pequeña tarea de organización en un evento regional. Quiero demostrar que un Baby, con las responsabilidades que él decida, puede marcar la diferencia en el marcador final."
-            }
-        ];
+  <!-- Delanteros -->
+  <div class="player fw1" onclick="openModal('fw1')">
+    <div class="player-circle">
+      <img src="https://i.imgflip.com/1ihzfe.jpg" alt="Distracted boyfriend">
+    </div>
+    <div class="player-label">Delantero</div>
+  </div>
+  <div class="player fw2" onclick="openModal('fw2')">
+    <div class="player-circle">
+      <img src="https://i.imgflip.com/1g8my4.jpg" alt="Thanos fine">
+    </div>
+    <div class="player-label">Delantero</div>
+  </div>
+  <div class="player fw3" onclick="openModal('fw3')">
+    <div class="player-circle">
+      <img src="https://i.imgflip.com/26am.jpg" alt="One does not simply">
+    </div>
+    <div class="player-label">Delantero</div>
+  </div>
+</div>
 
-        function openModal(index) {
-            const data = playersData[index];
-            document.getElementById('modal-title').innerText = data.title;
-            document.getElementById('modal-text').innerText = data.text;
-            document.getElementById('modal-meme').innerText = data.meme;
-            document.getElementById('modal').style.display = 'flex';
-        }
 
-        function closeModal(event) {
-            document.getElementById('modal').style.display = 'none';
-        }
+<!-- Modal -->
+<div id="modal" class="modal" onclick="closeModalOnOutside(event)">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal()">×</button>
+    <div class="modal-meme" id="modalMeme"></div>
+    <h3 id="modalPosition"></h3>
+    <h4 id="modalTitle"></h4>
+    <p id="modalText"></p>
+  </div>
+</div>
 
-        // Cerrar con la tecla Escape
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-    </script>
+<script>
+  const playerData = {
+    gk: {
+      position: 'Portero',
+      title: '🧤 Introducción: Ya no puedo seguir observando',
+      meme: 'https://i.imgflip.com/2/1wz3as.jpg',
+      text: 'Llevo suficiente tiempo siendo Observer y aunque me ha encantado conocer BEST desde la barrera, ha llegado el momento de la verdad. Como ese perro en la casa en llamas diciendo "This is fine", yo también necesito admitir que NO, no está bien seguir solo observando cuando lo que realmente quiero es lanzarme al campo y empezar a jugar de verdad. Es hora de dejar la portería de la observación y salir a defender los colores de BEST con todo lo que tengo. ¡Que empiece el partido!'
+    },
+    df1: {
+      position: 'Defensa Central',
+      title: '🛡️ Motivo 1: Me mola lo que hacéis',
+      meme: 'https://i.imgflip.com/7cp4yh.jpg',
+      text: 'Seamos sinceros: he visto lo que hace BEST y me ha robado el corazón. Los proyectos, el ambiente, la gente... Todo me ha conquistado completamente. Ya no puedo seguir fingiendo que "solo estoy mirando". Esto es amor verdadero y quiero comprometerme oficialmente. Como en cualquier buena relación, ha llegado el momento de pasar de "estar conociendo" a "hacer oficial". ¡Quiero llevar el escudo de BEST con orgullo!'
+    },
+    df2: {
+      position: 'Defensa Central',
+      title: '🛡️ Motivo 2: Quiero aportar mi granito',
+      meme: 'https://i.imgflip.com/kf88q.jpg',
+      text: 'He estado observando desde fuera y constantemente pienso "yo podría ayudar con esto" o "tengo una idea para aquello". Tengo energía, ganas y ese entusiasmo molesto de la gente nueva que todavía no sabe que algunas batallas están perdidas. Quiero poder decir "yo me encargo" sin sentir que me estoy colando en una conversación de adultos. Mi granito de arena está listo para ser lanzado, ¡solo necesito el permiso oficial!'
+    },
+    df3: {
+      position: 'Lateral Izquierdo',
+      title: '🛡️ Motivo 3: Aprender y crecer',
+      meme: 'https://i.imgflip.com/1bij.jpg',
+      text: 'BEST es como una universidad paralela donde puedes aprender habilidades que ninguna carrera te enseña: trabajo en equipo real, gestión de proyectos, networking, liderazgo... Y yo soy una esponja con sed de conocimiento. Quiero exprimir cada oportunidad de aprendizaje, asistir a formaciones, cagarla y aprender de ello, y convertirme en una mejor versión de mí mismo. Como Observer he probado el aperitivo, pero quiero el menú completo.'
+    },
+    df4: {
+      position: 'Lateral Derecho',
+      title: '🛡️ Motivo 4: Formar parte de algo grande',
+      meme: 'https://i.imgflip.com/261o3j.jpg',
+      text: 'Hay algo especial en sentir que formas parte de una comunidad que realmente hace cosas, que impacta, que conecta gente de toda Europa. No quiero ser un espectador de esa magia, quiero ser uno de los magos. Quiero tener esa sensación de pertenencia real, de poder decir "soy de BEST" y que signifique algo más que "voy a sus eventos". Quiero estar dentro del círculo, no rondándolo como un fantasma simpático.'
+    },
+    mf1: {
+      position: 'Mediocentro',
+      title: '⚽ Aportación 1: Mi primera contribución',
+      meme: 'https://i.imgflip.com/wje0h.jpg',
+      text: 'Aquí puedes explicar tu primera aportación real a BEST. Por ejemplo: "Participé activamente en [evento/proyecto], donde ayudé con [tarea específica]. Aunque era Observer, me metí de lleno y descubrí que puedo aportar más de lo que pensaba. Esa experiencia me confirmó que este es mi sitio."'
+    },
+    mf2: {
+      position: 'Mediocentro',
+      title: '⚽ Aportación 2: Donde he colaborado',
+      meme: 'https://i.imgflip.com/30b1gx.jpg',
+      text: 'Aquí habla de tu segunda aportación. Ejemplo: "También participé en [otra actividad], donde pude aportar mis habilidades en [área concreta]. Me encantó poder contribuir y ver cómo mis pequeñas acciones sumaban al resultado final. Cada experiencia me ha convencido más de que quiero seguir involucrado."'
+    },
+    mf3: {
+      position: 'Mediocentro',
+      title: '⚽ Aportación 3: Mi evolución',
+      meme: 'https://i.imgflip.com/265k.jpg',
+      text: 'Tu tercera aportación o un resumen de tu evolución. Por ejemplo: "He pasado de ser alguien que no conocía a nadie y apenas hablaba, a [logro personal]. He asistido a X eventos, conocido a gente increíble, y cada vez me siento más integrado. Ya no soy el nuevo perdido, soy el nuevo con ganas de comerse el mundo."'
+    },
+    fw1: {
+      position: 'Extremo Izquierdo',
+      title: '🚀 Futuro 1: Participar en proyectos',
+      meme: 'https://i.imgflip.com/1ihzfe.jpg',
+      text: 'Me encantaría involucrarme en la organización de eventos y proyectos. Tengo ideas frescas (y probablemente algunas locas) que me gustaría proponer. Quiero estar en esas reuniones donde se decide qué hacer, cómo hacerlo, y quién trae las pizzas. A medio plazo, me veo siendo parte activa de al menos [X proyectos/eventos], aportando creatividad y, sobre todo, muchas ganas de currar.'
+    },
+    fw2: {
+      position: 'Delantero Centro',
+      title: '🚀 Futuro 2: Mis habilidades al servicio',
+      meme: 'https://i.imgflip.com/1g8my4.jpg',
+      text: 'Puedo aportar mis conocimientos en [tus habilidades: diseño, programación, idiomas, organización, redes sociales, etc.]. Me gustaría ponerlos al servicio de BEST de forma más oficial y estructurada. A medio plazo, quiero especializarme en [área concreta] dentro de la asociación y convertirme en la persona a la que recurrir cuando se necesite ayuda en eso. ¡Quiero ser útil de forma estratégica!'
+    },
+    fw3: {
+      position: 'Extremo Derecho',
+      title: '🚀 Futuro 3: Crecer con BEST',
+      meme: 'https://i.imgflip.com/26am.jpg',
+      text: 'Mi plan a medio plazo es ir asumiendo responsabilidades de forma progresiva. Empezar con tareas pequeñas, demostrar que soy de fiar, y poco a poco ir escalando. No quiero quemar etapas, pero tampoco quiero estancarme. Me veo en unos meses siendo un Baby veterano que ayuda a los nuevos Observers, y quién sabe, quizás en un futuro aspirar a más. Quiero crecer al ritmo de BEST y viceversa.'
+    }
+  };
+
+  function openModal(playerId) {
+    const data = playerData[playerId];
+    document.getElementById('modalPosition').textContent = data.position;
+    document.getElementById('modalTitle').textContent = data.title;
+    const memeContainer = document.getElementById('modalMeme');
+    memeContainer.innerHTML = `<img src="${data.meme}" alt="${data.title}">`;
+    document.getElementById('modalText').textContent = data.text;
+    document.getElementById('modal').classList.add('active');
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('active');
+  }
+
+  function closeModalOnOutside(event) {
+    if (event.target.id === 'modal') {
+      closeModal();
+    }
+  }
+</script>
 </body>
 </html>

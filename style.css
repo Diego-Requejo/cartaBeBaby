@@ -1,0 +1,208 @@
+:root {
+    --pitch-green: #4CAF50; /* Verde césped */
+    --line-white: #FFFFFF;
+    --player-blue: #2196F3; /* Azul para los jugadores */
+    --player-text: #333;
+    --modal-bg: rgba(0, 0, 0, 0.9);
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif; /* Fuente opcional */
+    background-color: #333;
+    color: var(--line-white);
+    overflow-x: hidden; /* Evita scroll horizontal inesperado */
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: #1a1a1a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header h1 {
+    color: var(--line-white);
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: #bbb;
+    font-size: 1.1em;
+}
+
+.pitch {
+    background-color: var(--pitch-green);
+    min-height: calc(100vh - 120px); /* Altura de la vista menos el header */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* Distribuye las líneas de jugadores */
+    align-items: center;
+    padding: 20px 0;
+    position: relative;
+    overflow: hidden; /* Para las líneas del campo */
+}
+
+/* Líneas del campo (opcional, para hacerlo más realista) */
+.pitch::before, .pitch::after {
+    content: '';
+    position: absolute;
+    background-color: var(--line-white);
+}
+
+/* Línea central */
+.pitch::before {
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    transform: translateY(-50%);
+}
+/* Círculo central (tendría que ser con SVG o pseudo-elementos más complejos) */
+
+.player {
+    width: 100px; /* Tamaño del jugador */
+    height: 100px;
+    border-radius: 50%; /* Forma redonda */
+    background-color: var(--player-blue); /* Color de la camiseta */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    position: relative; /* Para el label */
+    border: 3px solid var(--line-white);
+}
+
+.player:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.player-img {
+    width: 70px; /* Tamaño del meme dentro del jugador */
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover; /* Para que la imagen se adapte bien */
+    border: 2px solid var(--line-white);
+}
+
+.player-label {
+    position: absolute;
+    bottom: -25px; /* Debajo del jugador */
+    color: var(--line-white);
+    font-size: 0.8em;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+}
+
+
+/* Posicionamiento de las líneas de jugadores */
+.gk {
+    margin-bottom: 20px; /* Separa del resto */
+}
+
+.defense-line, .midfield-line, .forward-line {
+    display: flex;
+    justify-content: space-around;
+    width: 80%; /* Ancho de la línea en el campo */
+    margin: 20px 0;
+}
+
+.defense-line { margin-top: auto; } /* Abajo */
+.midfield-line { margin-top: auto; margin-bottom: auto; } /* Centro */
+.forward-line { margin-bottom: auto; } /* Arriba */
+
+
+/* MODAL */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Permanece en su lugar */
+    z-index: 1; /* Por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    overflow: auto; /* Habilita scroll si es necesario */
+    background-color: var(--modal-bg);
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: relative;
+    color: var(--player-text);
+}
+
+.modal-meme {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 2px solid var(--player-blue);
+}
+
+.modal-content p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Responsividad básica */
+@media (max-width: 768px) {
+    .defense-line, .midfield-line, .forward-line {
+        flex-wrap: wrap; /* Envolviendo los jugadores en pantallas pequeñas */
+        justify-content: center;
+        width: 95%;
+    }
+
+    .player {
+        margin: 10px;
+        width: 80px;
+        height: 80px;
+    }
+
+    .player-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .player-label {
+        font-size: 0.7em;
+        bottom: -20px;
+    }
+
+    .header h1 {
+        font-size: 1.8em;
+    }
+}
