@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solicitud de Ascenso BEST - Formación 4-3-3</title>
+  <title>Carta Be Baby - Diego Requejo</title>
   <meta name="description" content="">
 
   <meta property="og:title" content="">
@@ -12,14 +12,18 @@
   <meta property="og:image" content="">
   <meta property="og:image:alt" content="">
 
-  <link rel="icon" href="/favicon.ico" sizess="any">
-  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="/img/icon.png">
   <link rel="apple-touch-icon" href="img/icon.png">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
     }
 
     body {
@@ -58,9 +62,8 @@
 
     .field-container {
       max-width: 900px;
-      aspect-ratio: 3/2;
       margin: auto auto;
-      min-height: 400px;
+      min-height: 700px;
       position: relative;
       background: #2d8f42;
       border-radius: 15px;
@@ -163,7 +166,7 @@
       font-size: clamp(1rem, 3vw, 2rem);
     }
 
-    #tit-portero{bottom: 8%;left: 15%;}
+    #tit-portero{bottom: 8%;left: 10%;}
     #tit-defensa{bottom: 40%;}
     #tit-media{bottom: 65%;}
     #tit-delantera{bottom: 90%;}
@@ -298,8 +301,8 @@
 <body>
 <div class="header">
   <h1>🏆 PREMIOS THE BEST 2025 🏆</h1>
-  <h2>Carta Be Baby - Diego Requejo</h2>
-  <p>⚽ Haz clic en cada jugador para descubrir porque debo ser Baby ⚽</p>
+  <h2>✉️ Carta Be Baby 👶🏻 - Diego Requejo</h2>
+  <p>⚽ Haz clic en cada posición para descubrir porque debo ser Baby ⚽</p>
 </div>
 
 <div class="field-container">
@@ -313,16 +316,16 @@
   <!-- Portero -->
   <div class="player gk" onclick="openModal('gk')">
     <div class="player-circle">
-      <img src="https://i.imgflip.com/2/1wz3as.jpg" alt="This is fine">
+      <img src="/img/portero.png" alt="STOP OBSERVING">
     </div>
-    <div class="player-label">Portero</div>
+    <div class="player-label">👀➡️👶🏻</div>
   </div>
   <!-- Defensa -->
   <div class="player df1" onclick="openModal('df1')">
     <div class="player-circle">
-      <img src="https://i.imgflip.com/7cp4yh.jpg" alt="Heart eyes">
+      <img src="img/li.png" alt="Heart eyes">
     </div>
-    <div class="player-label">Defensa</div>
+    <div class="player-label">¿Que me motiva a ser Baby?</div>
   </div>
   <div class="player df2" onclick="openModal('df2')">
     <div class="player-circle">
@@ -399,27 +402,28 @@
 <script>
   const playerData = {
     gk: {
-      position: 'Portero',
-      title: '🧤 Introducción: Ya no puedo seguir observando',
-      meme: 'https://i.imgflip.com/2/1wz3as.jpg',
-      text: 'Llevo suficiente tiempo siendo Observer y aunque me ha encantado conocer BEST desde la barrera, ha llegado el momento de la verdad. Como ese perro en la casa en llamas diciendo "This is fine", yo también necesito admitir que NO, no está bien seguir solo observando cuando lo que realmente quiero es lanzarme al campo y empezar a jugar de verdad. Es hora de dejar la portería de la observación y salir a defender los colores de BEST con todo lo que tengo. ¡Que empiece el partido!'
+      position: '👀➡️👶🏻',
+      title: 'OBSERVER STOP OBSERVING AND BE A BABY 🗣️🗣️🗣️🗣️🗣️',
+      meme: 'img/portero.png',
+      text: 'Llevo suficiente tiempo siendo observando y ha llegado el momento de hacer algo más.'
     },
     df1: {
-      position: 'Defensa Central',
-      title: '🛡️ Motivo 1: Me mola lo que hacéis',
-      meme: 'https://i.imgflip.com/7cp4yh.jpg',
-      text: 'Seamos sinceros: he visto lo que hace BEST y me ha robado el corazón. Los proyectos, el ambiente, la gente... Todo me ha conquistado completamente. Ya no puedo seguir fingiendo que "solo estoy mirando". Esto es amor verdadero y quiero comprometerme oficialmente. Como en cualquier buena relación, ha llegado el momento de pasar de "estar conociendo" a "hacer oficial". ¡Quiero llevar el escudo de BEST con orgullo!'
+      position: '¿Que me motiva a ser Baby?',
+      title: 'He pasado suficiente tiempo en modo espectador. Ya me sé los créditos, quiero salir en la peli.',
+      meme: 'img/li.png',
+      text: 'Ya llevo un tiempo como observer, lo que he visto me ha gustado y estoy deseando saber y aportar más. ¿Algún' +
+              'día entenderé los bullshits que tiráis y las 800 siglas que hay? (Spoiler: NO)'
     },
     df2: {
-      position: 'Defensa Central',
-      title: '🛡️ Motivo 2: Quiero aportar mi granito',
-      meme: 'https://i.imgflip.com/kf88q.jpg',
-      text: 'He estado observando desde fuera y constantemente pienso "yo podría ayudar con esto" o "tengo una idea para aquello". Tengo energía, ganas y ese entusiasmo molesto de la gente nueva que todavía no sabe que algunas batallas están perdidas. Quiero poder decir "yo me encargo" sin sentir que me estoy colando en una conversación de adultos. Mi granito de arena está listo para ser lanzado, ¡solo necesito el permiso oficial!'
+      position: '¿Por qué seguir creciendo en BEST¿',
+      title: 'Quiero aprender cómo funciona BEST desde dentro',
+      meme: 'img/dfcIzq.gif',
+      text: 'He estado observando desde fuera y quiero saber más de como funciona BEST desde dentro.'
     },
     df3: {
-      position: 'Lateral Izquierdo',
-      title: '🛡️ Motivo 3: Aprender y crecer',
-      meme: 'https://i.imgflip.com/1bij.jpg',
+      position: '¿Por qué deberías de ser Baby?',
+      title: 'Un gran poder conlleva una gran responsabilidad.',
+      meme: 'img/dfcDer.png',
       text: 'BEST es como una universidad paralela donde puedes aprender habilidades que ninguna carrera te enseña: trabajo en equipo real, gestión de proyectos, networking, liderazgo... Y yo soy una esponja con sed de conocimiento. Quiero exprimir cada oportunidad de aprendizaje, asistir a formaciones, cagarla y aprender de ello, y convertirme en una mejor versión de mí mismo. Como Observer he probado el aperitivo, pero quiero el menú completo.'
     },
     df4: {
@@ -485,6 +489,6 @@
       closeModal();
     }
   }
-</script>
+  </script>
 </body>
 </html>
